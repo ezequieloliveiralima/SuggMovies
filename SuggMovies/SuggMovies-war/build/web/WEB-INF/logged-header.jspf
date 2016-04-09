@@ -1,0 +1,10 @@
+<link href="./css/logged-header.css" type="text/css" rel="stylesheet">
+<header>
+    <div>
+        <span><a href="home.jsp"><img src="./images/small-logo.png"></a></span>
+        <span><img class="img-user"></span>
+        <span><a href="${pageContext.request.contextPath}/suggMovies?command=view-profile&username=ezequiel">Ezequiel de Oliveira Lima</a></span>
+        <span></span>
+        <span><a href="${pageContext.request.contextPath}/suggMovies?command=logout"><button id="btn-logout">SAIR</button></a></span>
+    </div>
+</header>

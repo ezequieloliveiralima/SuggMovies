@@ -1,0 +1,45 @@
+/*
+Here comes the text of your license
+Each line should be prefixed with 
+*/
+/* 
+    Created on : 09/03/2016, 12:41:55
+    Author     : ezequieloliveira
+*/
+
+section {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    margin: 5px;
+}
+
+section form span {
+    display: block;
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+}
+
+section input[type=email], input[type=password] {
+    width: 300px;
+    height: 20px;
+    padding: 10px;
+    font-family: Tahoma;
+    font-size: 15px;
+}
+
+section button {
+    width: 320px;
+    height: 40px;
+    background-color: #D12A28;
+    border: 0px;
+    font-size: 15px;
+    font-family: Tahoma;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+section * {
+    font-family: Tahoma;
+}

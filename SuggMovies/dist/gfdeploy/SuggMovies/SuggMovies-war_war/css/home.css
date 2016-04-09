@@ -1,0 +1,62 @@
+/*
+Here comes the text of your license
+Each line should be prefixed with 
+*/
+/* 
+    Created on : 09/03/2016, 08:44:44
+    Author     : 41488350
+*/
+
+section {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    margin: 5px;
+}
+
+section div {
+    display: block;
+}
+
+.c-query {
+    text-align: center;
+}
+
+#q {
+    width: 300px;
+    height: 20px;
+    padding: 15px;
+    border: 1px solid #CCCCCC;
+}
+
+#content {
+    
+}
+
+#content article {
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    background-color: #F0F0F0;
+    margin: 10px;
+}
+
+#content article div {
+    display: block;
+}
+
+#content article div:nth-child(1) {
+    height: 200px;
+}
+
+#content article div:nth-child(2) {
+    background-color: #000000;
+    height: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Tahoma;
+    line-height: 50px;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
