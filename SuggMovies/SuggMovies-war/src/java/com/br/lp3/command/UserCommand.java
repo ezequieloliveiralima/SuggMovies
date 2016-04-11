@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 41488350
  */
-public class LoginCommand implements Command {
-
+public class UserCommand implements Command {
+    
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private Boolean resultado;
-    
+    private String returnPage;
+
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
@@ -25,15 +25,22 @@ public class LoginCommand implements Command {
 
     @Override
     public void execute() {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        resultado = "rodrigo@gmail.com".equals(email) && "123".equals(password);
+        String action = request.getParameter("action");
+        if ("login".equals(action)) {
+            login();
+        }
     }
 
     @Override
     public String getReturnPage() {
-        return resultado ? "home.jsp" : "index.jsp";
+        return returnPage;
+    }
+    
+    private void login() {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
+        returnPage = "rodrigo@gmail.com".equals(email) && "123".equals(password) ? "index.jsp" : "login";
     }
     
 }
