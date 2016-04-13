@@ -1,16 +1,14 @@
-Fri Apr 01 10:01:13 BRT 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Wed Apr 13 18:58:20 BRT 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Fri Apr 01 10:01:51 BRT 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0153-d1e9-c98c-00007ea8a964
-no diretório de banco de dados D:\Projetos\LP3\SuggMovies\SuggMovies-ejb\Data Base\suggmovies 
+Wed Apr 13 18:58:33 BRT 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0154-11a1-d963-fffffea274f9
+no diretório de banco de dados E:\Projects\ProjectSuggMovies\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base\suggmovies 
 
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_40-b26
-user.dir=C:\Temp\glassfish4\javadb
+java.runtime.version=1.8.0_73-b02
+user.dir=C:\Users\Windows\GlassFish_Server\javadb
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
-derby.system.home=D:\Projetos\LP3\SuggMovies\SuggMovies-ejb\Data Base
+derby.system.home=E:\Projects\ProjectSuggMovies\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-----------------------------------------------------------------
-Fri Apr 01 10:27:36 BRT 2016: Shutting down Derby engine

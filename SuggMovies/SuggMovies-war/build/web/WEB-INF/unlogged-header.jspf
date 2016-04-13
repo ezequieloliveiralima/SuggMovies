@@ -1,9 +1,0 @@
-<link href="./css/unlogged-header.css" type="text/css" rel="stylesheet">
-<header>
-    <div>
-        <span><a href="index.jsp"><img src="./images/small-logo.png"></a></span>
-        <span><img class="img-user"></span>
-        <span></span>
-        <span><a href="signup.jsp"><button id="btn-reg">REGISTRE-SE</button></a></span>
-    </div>
-</header>
