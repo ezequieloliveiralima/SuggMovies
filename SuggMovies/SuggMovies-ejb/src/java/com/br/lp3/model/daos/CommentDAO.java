@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContextType;
 @Stateless(name = "comment")
 public class CommentDAO implements GenericDAO<Comment>{
 
-    @PersistenceContext(unitName = "SuggComments-ejbPU", type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext(unitName = "SuggMovies-ejbPU", type = PersistenceContextType.TRANSACTION)
     
     EntityManager em;
     

@@ -1,7 +1,3 @@
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 package com.br.lp3.model.entities;
 
 import java.io.Serializable;
@@ -108,7 +104,6 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return "com.br.lp3.model.entities.Movie[ idMovie=" + idMovie + " ]";
+        return "Movie{" + "idMovie=" + idMovie + ", title=" + title + '}';
     }
-    
 }

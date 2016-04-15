@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContextType;
 @Stateless(name = "account")
 public class AccountDAO implements GenericDAO<Account>{
 
-    @PersistenceContext(unitName = "SuggAccounts-ejbPU", type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext(unitName = "SuggMovies-ejbPU", type = PersistenceContextType.TRANSACTION)
     
     EntityManager em;
     
