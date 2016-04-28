@@ -10,6 +10,10 @@
 <project name="SuggMovies-ejb" default="default" basedir="." xmlns:ejbjarproject="http://www.netbeans.org/ns/j2ee-ejbjarproject/3">
     <description>Builds, tests, and runs the project SuggMovies-ejb.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="-init-taskdefs">
+        <property name="libs.CopyLibs.classpath" value="bin/copylibstask.jar"/>
+        <fail unless="libs.CopyLibs.classpath"></fail>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 
@@ -64,5 +68,5 @@
     properties which you can use check the target you are overriding in 
     nbproject/build-impl.xml file. 
 
-    -->
+            -->
 </project>
