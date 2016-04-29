@@ -18,11 +18,12 @@
         <section>
             <form action="suggmovies" method="post">
                 <input type="hidden" name="command" value="User">
-                <input type="hidden" name="action" value="login">
+                <input type="hidden" name="action" value="registrar">
                 <span><input type="email" name="email" placeholder="E-mail" required="true"></span>
                 <span><input type="password" name="password" placeholder="Senha" required="true"></span>
-                <span><input type="checkbox" name="keepConnected" id="keepConnected"><label for="keepConnected">manter conectado</label></span>
-                <span><button>Entrar</button></span>
+                <span><input type="text" name="name" placeholder="Nome" required="true"></span>
+                <span><input type="date" name="bday" placeholder="Aniversário" required="true"></span>
+                <span><button>Registrar</button></span>
             </form>
         </section>
     </body>

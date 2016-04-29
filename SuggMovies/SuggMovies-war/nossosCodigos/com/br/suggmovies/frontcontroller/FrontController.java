@@ -24,6 +24,7 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
       
         String cmd = request.getParameter("command") + "Command";
+        System.out.println(cmd);
         try {
             Command command = (Command) Class.forName("com.br.lp3.command." + cmd).newInstance();
             command.init(request, response);
