@@ -44,14 +44,14 @@ public class AccountDAO implements GenericDAO<Account>{
     
     public Account readyByEmail(String email)
     {
-        Account account = em.createNamedQuery("Account.findByEmail", Account.class).getSingleResult();
-        return account;
+        List<Account> accounts = em.createNamedQuery("Account.findByEmail", Account.class).setParameter("email", email).getResultList();
+        return accounts.get(0);
     }
 
     @Override
     public List<Account> readyAll() {
-        List<Account> movies = em.createNamedQuery("Account.findAll", Account.class).getResultList();
-        return movies;
+        List<Account> accounts = em.createNamedQuery("Account.findAll", Account.class).getResultList();
+        return accounts;
     }
     
 }

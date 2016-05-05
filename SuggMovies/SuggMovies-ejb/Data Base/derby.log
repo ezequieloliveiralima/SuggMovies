@@ -1,8 +1,8 @@
-Fri Apr 29 09:15:51 BRT 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Thu May 05 10:10:12 BRT 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Fri Apr 29 09:15:52 BRT 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0154-61f2-5072-fffff347940c
-no diretório de banco de dados D:\LPIII\ProjetoFinal\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base\suggmovies 
+Thu May 05 10:10:16 BRT 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0154-810a-3d07-ffff8fb5906b
+no diretório de banco de dados E:\LPIII\ProjetoFinal\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base\suggmovies 
 
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_40-b26
@@ -10,9 +10,9 @@ user.dir=C:\Program Files\GlassFish_Server\javadb
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
-derby.system.home=D:\LPIII\ProjetoFinal\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base
+derby.system.home=E:\LPIII\ProjetoFinal\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-Fri Apr 29 09:15:55 BRT 2016 Thread[DRDAConnThread_2,5,main] (XID = 2780), (SESSIONID = 0), (DATABASE = suggmovies), (DRDAID = {1}), Cleanup action starting
+Thu May 05 10:10:20 BRT 2016 Thread[DRDAConnThread_2,5,main] (XID = 3418), (SESSIONID = 0), (DATABASE = suggmovies), (DRDAID = {1}), Cleanup action starting
 java.sql.SQLNonTransientConnectionException: Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
@@ -62,4 +62,4 @@ java.sql.SQLException: Ocorreu uma falha de autenticação da conexão.  Motivo: Au
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Fri Apr 29 09:15:55 BRT 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = suggmovies), (DRDAID = {1}), Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
+Thu May 05 10:10:20 BRT 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = suggmovies), (DRDAID = {1}), Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
