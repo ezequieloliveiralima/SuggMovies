@@ -3,6 +3,7 @@ package com.br.lp3.model.daos;
 
 import com.br.lp3.model.entities.ProfileAccount;
 import java.util.List;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +13,8 @@ import javax.persistence.PersistenceContextType;
  *
  * @author Rodrigo T. L. Takeuti
  */
-@Stateless(name = "profileAccount")
+@LocalBean
+@Stateless
 public class ProfileAccountDAO implements GenericDAO<ProfileAccount>{
 
     @PersistenceContext(unitName = "SuggMovies-ejbPU", type = PersistenceContextType.TRANSACTION)
@@ -36,8 +38,8 @@ public class ProfileAccountDAO implements GenericDAO<ProfileAccount>{
 
     @Override
     public ProfileAccount readById(long id) {
-        ProfileAccount book = em.find(ProfileAccount.class, id);
-        return book;
+        ProfileAccount profile = em.createNamedQuery("ProfileAccount.findByIdAccount", ProfileAccount.class).setParameter("idAccount", id).getResultList().get(0);
+        return profile;
     }
 
     @Override

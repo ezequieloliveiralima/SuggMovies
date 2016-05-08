@@ -4,8 +4,11 @@
  */
 package com.br.lp3.command;
 
+import com.br.lp3.exceptions.SigninEmailException;
+import com.br.lp3.exceptions.SigninPassException;
 import com.br.lp3.model.daos.AccountDAO;
 import com.br.lp3.model.daos.GenericDAO;
+import com.br.lp3.model.daos.ProfileAccountDAO;
 import com.br.lp3.model.entities.Account;
 import com.br.lp3.model.entities.ProfileAccount;
 import java.util.Date;
@@ -22,12 +25,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author 41488350
  */
 public class UserCommand implements Command {
-    GenericDAO profileAccount = lookupprofileAccountLocal();
+
+    ProfileAccountDAO profileAccountDAO = lookupProfileAccountDAOBean();
     AccountDAO accountDAO = lookupAccountDAOBean();
-    
+
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private String returnPage;
+    private String returnPage = "index.jsp";
 
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
@@ -39,10 +43,13 @@ public class UserCommand implements Command {
     public void execute() {
         String action = request.getParameter("action");
         if ("login".equals(action)) {
-            login();
-        }else if("registrar".equals(action))
-        {
-            registrar();
+            signin();
+        } else if ("registrar".equals(action)) {
+            signup();
+        } else if ("logout".equals(action)) {
+            logout();
+        } else if ("view-profile".equals(action)) {
+            viewProfile();
         }
     }
 
@@ -51,37 +58,37 @@ public class UserCommand implements Command {
         return returnPage;
     }
 
-    private void login() {
+    private void signin() {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        Account user = accountDAO.readyByEmail(email);
-
+        Account user;
         returnPage = "index.jsp";
-        if (user != null) {
+        try {
+            user = accountDAO.readyByEmail(email);
+
             if (!user.getPassword().equals(password)) {
-                request.getSession().setAttribute("errorMsg", "Senha inválidos");
+                throw new SigninPassException();
             } else {
+                request.getSession().setAttribute("currentProfile", profileAccountDAO.readById(user.getIdAccount()));
+                request.getSession().setAttribute("user", user);
                 returnPage = "home.jsp";
             }
-        } else {
-            request.getSession().setAttribute("errorMsg", "Usuário ou senha inválidos");
-
+        } catch (SigninEmailException | SigninPassException ex) {
+            request.getSession().setAttribute("errorMsg", ex.getMessage());
         }
-
     }
-    
-    public void registrar()
-    {
+
+    private void signup() {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String bday = request.getParameter("bday");
         String name = request.getParameter("name");
-        
+
         Account account = new Account();
         account.setEmail(email);
         account.setPassword(password);
-        
+
         ProfileAccount pa = new ProfileAccount();
         pa.setName(name);
         pa.setBirthDate(new Date());
@@ -90,8 +97,18 @@ public class UserCommand implements Command {
         pa.setAccount(account);
         account.setProfileAccount(pa);
         accountDAO.insert(account);
-        
+
         returnPage = "index.jsp";
+    }
+
+    private void logout() {
+        request.getSession().invalidate();
+        returnPage = "index.jsp";
+    }
+
+    private void viewProfile() {
+        request.getSession().setAttribute("profile", profileAccountDAO.readById(Integer.parseInt(request.getParameter("id"))));
+        returnPage = "profile.jsp";
     }
 
     private AccountDAO lookupAccountDAOBean() {
@@ -104,10 +121,10 @@ public class UserCommand implements Command {
         }
     }
 
-    private GenericDAO lookupprofileAccountLocal() {
+    private ProfileAccountDAO lookupProfileAccountDAOBean() {
         try {
             Context c = new InitialContext();
-            return (GenericDAO) c.lookup("java:global/SuggMovies/SuggMovies-ejb/profileAccount!com.br.lp3.model.daos.GenericDAO");
+            return (ProfileAccountDAO) c.lookup("java:global/SuggMovies/SuggMovies-ejb/ProfileAccountDAO!com.br.lp3.model.daos.ProfileAccountDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);

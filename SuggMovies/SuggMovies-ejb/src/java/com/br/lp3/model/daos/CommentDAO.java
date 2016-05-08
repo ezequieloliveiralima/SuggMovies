@@ -3,6 +3,7 @@ package com.br.lp3.model.daos;
 
 import com.br.lp3.model.entities.Comment;
 import java.util.List;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +13,8 @@ import javax.persistence.PersistenceContextType;
  *
  * @author Rodrigo T. L. Takeuti
  */
-@Stateless(name = "comment")
+@LocalBean
+@Stateless
 public class CommentDAO implements GenericDAO<Comment>{
 
     @PersistenceContext(unitName = "SuggMovies-ejbPU", type = PersistenceContextType.TRANSACTION)

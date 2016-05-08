@@ -8,11 +8,8 @@ Each line should be prefixed with
 */
 
 section {
-    position: absolute;
-    top: 50px;
-    left: 0px;
-    right: 0px;
-    margin: 5px;
+    display: block;
+    margin-top: 100px;
 }
 
 section form span {

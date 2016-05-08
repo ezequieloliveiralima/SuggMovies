@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +16,12 @@
     </head>
     <body>
         <%@include file="WEB-INF/unlogged-header.jspf" %>
+        <c:if test="${errorMsg != null}">
+            <div class="msg">
+                ${errorMsg}
+            </div>
+            <c:set var="errorMsg" value="${null}"></c:set>
+        </c:if>
         <section>
             <form action="suggmovies" method="post">
                 <input type="hidden" name="command" value="User">

@@ -3,6 +3,7 @@ package com.br.lp3.model.daos;
 
 import com.br.lp3.model.entities.Indication;
 import java.util.List;
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +13,8 @@ import javax.persistence.PersistenceContextType;
  *
  * @author Rodrigo T. L. Takeuti
  */
-@Stateless(name = "indication")
+@LocalBean
+@Stateless
 public class IndicationDAO implements GenericDAO<Indication>{
 
     @PersistenceContext(unitName = "SuggMovies-ejbPU", type = PersistenceContextType.TRANSACTION)

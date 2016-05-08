@@ -1,10 +1,26 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${user == null}">
+    <c:redirect url="suggmovies?command=User&action=logout"></c:redirect>
+</c:if>
 <link href="./css/logged-header.css" type="text/css" rel="stylesheet">
 <header>
     <div>
-        <span><a href="home.jsp"><img src="./images/small-logo.png"></a></span>
-        <span><img class="img-user"></span>
-        <span><a href="${pageContext.request.contextPath}/suggMovies?command=view-profile&username=ezequiel">Ezequiel de Oliveira Lima</a></span>
-        <span></span>
-        <span><a href="${pageContext.request.contextPath}/suggMovies?command=logout"><button id="btn-logout">SAIR</button></a></span>
+        <span>
+            <a href="home.jsp"><img src="./images/small-logo.png"></a>
+        </span>
+        <span>
+            <img class="img-user">
+        </span>
+        <span>
+            <a href="${pageContext.request.contextPath}/suggmovies?command=User&id=${user.idAccount}&action=view-profile">${currentProfile.name}</a>
+        </span>
+        <span>
+            <a href="edit-profile.jsp">Editar perfil</a>
+        </span>
+        <span>
+            <a href="${pageContext.request.contextPath}/suggmovies?command=User&action=logout">
+                <button id="btn-logout">SAIR</button>
+            </a>
+        </span>
     </div>
 </header>

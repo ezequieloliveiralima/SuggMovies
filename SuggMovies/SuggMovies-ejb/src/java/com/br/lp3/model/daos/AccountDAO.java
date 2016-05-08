@@ -1,6 +1,7 @@
 
 package com.br.lp3.model.daos;
 
+import com.br.lp3.exceptions.SigninEmailException;
 import com.br.lp3.model.entities.Account;
 import java.util.List;
 import javax.ejb.LocalBean;
@@ -42,9 +43,12 @@ public class AccountDAO implements GenericDAO<Account>{
         return account;
     }
     
-    public Account readyByEmail(String email)
+    public Account readyByEmail(String email) throws SigninEmailException
     {
         List<Account> accounts = em.createNamedQuery("Account.findByEmail", Account.class).setParameter("email", email).getResultList();
+        if (accounts.size() != 1) {
+            throw new SigninEmailException();
+        }
         return accounts.get(0);
     }
 

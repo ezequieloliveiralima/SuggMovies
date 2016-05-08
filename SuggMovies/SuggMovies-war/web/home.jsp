@@ -18,19 +18,14 @@
         <%@include file="WEB-INF/logged-header.jspf" %>
         <section>
             <div class="c-query">
-                <form>
+                <form action="suggmovies" method="get">
+                    <input type="hidden" name="command" value="Search">
+                    <input type="hidden" name="action" value="q">
                     <input type="search" name="q" id="q" placeholder="Busque aqui titulos de livros" autocomplete="off" autofocus="true">
                 </form>
             </div>
             <div id="content">
-                <c:forEach begin="0" end="100" var="i">
-                    <a href="${i}">
-                        <article id="">
-                            <div><img src=""></div>
-                            <div>aaa</div>
-                        </article>
-                    </a>
-                </c:forEach>
+                
             </div>
         </section>
     </body>

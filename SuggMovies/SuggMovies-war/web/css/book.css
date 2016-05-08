@@ -1,0 +1,29 @@
+.title {
+    font-size: 30px;
+    font-family: Tahoma;
+    margin-bottom: 100px;
+}
+
+.description {
+    font-family: Tahoma;
+    text-align: justify;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+body div {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+}
+
+.image {
+    width: 200%;
+    height: 200%;
+}
+
+.go-back a {
+    color: #333333;
+    font-family: Arial;
+    font-size: 20px;
+}

@@ -32,3 +32,18 @@ input[type=search], input[type=email], input[type=password] {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 );
     border: 0px solid;
 }
+
+.msg {
+    background-color: rgba(255, 0, 0, .3);
+    border: 1px solid red;
+    padding: 15px;
+    margin: 100px;
+    border-radius: 5px;
+    animation: anim 3s 1;
+    display: block;
+}
+
+@keyframes anim {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
