@@ -33,3 +33,18 @@ Each line should be prefixed with
     border-radius: 37px;
     border: 1px solid #CCCCCC;
 }
+
+#content {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+}
+
+#content span {
+    display: block;
+    font-family: Tahoma;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+}

@@ -1,0 +1,13 @@
+section input {
+    width: 300px;
+    height: 20px;
+    padding: 10px;
+    font-family: Tahoma;
+    font-size: 15px;
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f2f2f2 99%, #cccccc 99%);
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f2f2f2 99%,#cccccc 99%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#f2f2f2 99%,#cccccc 99%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 );
+    border: 0px solid;
+}

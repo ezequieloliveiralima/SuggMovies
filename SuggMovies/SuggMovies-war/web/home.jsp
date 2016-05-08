@@ -12,6 +12,7 @@
         <link href="./css/default.css" type="text/css" rel="stylesheet">
         <link href="./css/home.css" type="text/css" rel="stylesheet">
         <meta charset="utf-8">
+        <script src="javascript/default.js" type="text/javascript"></script>
         <title></title>
     </head>
     <body>
@@ -30,3 +31,4 @@
         </section>
     </body>
 </html>
+<script src="javascript/home.js" type="text/javascript"></script>

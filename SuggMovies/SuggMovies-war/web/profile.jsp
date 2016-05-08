@@ -13,8 +13,13 @@
         <div id="header-profile">
             <ul>
                 <li><img src="images/no-avatar.png" id="profile-image"></li>
-                <li class="fullname">${user.idAccount}</li>
+                <li class="fullname">${profile.name}</li>
             </ul>
+        </div>
+        <div id="content">
+            <span><b>Data de nascimento</b> ${profileBirth}</span>
+            <span><b>Email</b> ${profile.account.email}</span>
+            <span><b>Data de cadastro</b> ${profile.signupDate}</span>
         </div>
     </body>
 </html>

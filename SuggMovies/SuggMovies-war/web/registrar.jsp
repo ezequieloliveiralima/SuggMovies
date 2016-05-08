@@ -10,6 +10,7 @@
     <head>
         <link href="./css/default.css" type="text/css" rel="stylesheet">
         <link href="./css/index.css" type="text/css" rel="stylesheet">
+        <link href="css/registrar.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>

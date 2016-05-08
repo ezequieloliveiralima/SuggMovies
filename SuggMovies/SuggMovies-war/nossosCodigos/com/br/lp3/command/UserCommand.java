@@ -11,6 +11,8 @@ import com.br.lp3.model.daos.GenericDAO;
 import com.br.lp3.model.daos.ProfileAccountDAO;
 import com.br.lp3.model.entities.Account;
 import com.br.lp3.model.entities.ProfileAccount;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,6 +52,8 @@ public class UserCommand implements Command {
             logout();
         } else if ("view-profile".equals(action)) {
             viewProfile();
+        } else if ("edit-profile".equals(action)) {
+            editProfile();
         }
     }
 
@@ -85,18 +89,31 @@ public class UserCommand implements Command {
         String bday = request.getParameter("bday");
         String name = request.getParameter("name");
 
-        Account account = new Account();
-        account.setEmail(email);
-        account.setPassword(password);
+        try {
+            accountDAO.readyByEmail(email);
+            request.getSession().setAttribute("errorMsg", "E-mail já cadastrado.");
+        } catch (Exception e) {
+            Account account = new Account();
+            account.setEmail(email);
+            account.setPassword(password);
 
-        ProfileAccount pa = new ProfileAccount();
-        pa.setName(name);
-        pa.setBirthDate(new Date());
-        pa.setSignupDate(new Date());
+            ProfileAccount pa = new ProfileAccount();
+            pa.setName(name);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
 
-        pa.setAccount(account);
-        account.setProfileAccount(pa);
-        accountDAO.insert(account);
+            try {
+                date = formatter.parse(bday);
+            } catch (ParseException ex1) {
+                System.out.println(ex1);
+            }
+            pa.setBirthDate(date);
+            pa.setSignupDate(new Date());
+
+            pa.setAccount(account);
+            account.setProfileAccount(pa);
+            accountDAO.insert(account);
+        }
 
         returnPage = "index.jsp";
     }
@@ -107,8 +124,44 @@ public class UserCommand implements Command {
     }
 
     private void viewProfile() {
-        request.getSession().setAttribute("profile", profileAccountDAO.readById(Integer.parseInt(request.getParameter("id"))));
+        ProfileAccount pa = profileAccountDAO.readById(Integer.parseInt(request.getParameter("id")));
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        request.getSession().setAttribute("profileBirth", formatter.format(pa.getBirthDate()));
+        request.getSession().setAttribute("profile", pa);
         returnPage = "profile.jsp";
+    }
+
+    private void editProfile() {
+        ProfileAccount pa = (ProfileAccount) request.getSession().getAttribute("currentProfile");
+        Account a = (Account) request.getSession().getAttribute("user");
+
+        String oldPass = request.getParameter("oldPass");
+        String newPass = request.getParameter("newPass");
+        String name = request.getParameter("name");
+        String bDay = request.getParameter("bday");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+
+        try {
+            date = formatter.parse(bDay);
+        } catch (ParseException ex1) {
+            System.out.println(ex1);
+        }
+
+        pa.setBirthDate(date);
+        pa.setName(name);
+        if (a.getPassword().equals(oldPass)) {
+            if (!newPass.equals("")) {
+                a.setPassword(newPass);
+            }
+            accountDAO.update(a);
+            profileAccountDAO.update(pa);
+        } else {
+            request.getSession().setAttribute("errorMsg", "Senha antiga errada.");
+        }
+
+        returnPage = "edit-profile.jsp";
     }
 
     private AccountDAO lookupAccountDAOBean() {

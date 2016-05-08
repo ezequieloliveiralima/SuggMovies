@@ -44,8 +44,8 @@ public class IndicationDAO implements GenericDAO<Indication>{
 
     @Override
     public List<Indication> readyAll() {
-        List<Indication> books = em.createNamedQuery("Indication.findAll", Indication.class).getResultList();
-        return books;
+        List<Indication> indications = em.createNamedQuery("Indication.findAll", Indication.class).getResultList();
+        return indications;
     }
     
 }
