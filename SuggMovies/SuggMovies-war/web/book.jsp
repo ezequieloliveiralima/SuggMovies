@@ -29,5 +29,13 @@
             </c:forEach>
             ]
         </div>
+        <br>
+        <p><b>Trailer</b></p>
+        <div class="trailer">
+            <c:forEach items="${trailers}" var="trailer">
+                <iframe width="420" height="315"
+                        src="http://www.youtube.com/embed/${trailer.id.videoId}"></iframe>
+            </c:forEach>
+        </div>
     </body>
 </html>

@@ -1,14 +1,14 @@
-Sun May 08 11:33:32 BRT 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conex√µes na porta 1527 em {3}
+Wed May 11 15:43:23 BRT 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexıes na porta 1527 em {3}
 ----------------------------------------------------------------
-Sun May 08 11:33:33 BRT 2016:
- Inicializando o Derby vers√£o The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): inst√¢ncia a816c00e-0154-90c9-9cc6-ffff9d545018
-no diret√≥rio de banco de dados /Users/ezequieloliveira/Desktop/Graduacao/SuggMovies/SuggMovies/SuggMovies-ejb/Data Base/suggmovies 
+Wed May 11 15:43:24 BRT 2016:
+ Inicializando o Derby vers„o The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): inst‚ncia a816c00e-0154-a121-6f69-00002edcc84f
+no diretÛrio de banco de dados E:\Projects\suggMovies-11-05-16\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base\suggmovies 
 
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_31-b13
-user.dir=/Applications/NetBeans/glassfish-4.1/javadb
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.11.4
-derby.system.home=/Users/ezequieloliveira/Desktop/Graduacao/SuggMovies/SuggMovies/SuggMovies-ejb/Data Base
+java.runtime.version=1.8.0_73-b02
+user.dir=C:\Users\Windows\GlassFish_Server\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=E:\Projects\suggMovies-11-05-16\SuggMovies\SuggMovies\SuggMovies-ejb\Data Base
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''

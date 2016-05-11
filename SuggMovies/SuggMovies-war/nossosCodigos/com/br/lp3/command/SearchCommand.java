@@ -4,6 +4,7 @@ import googlebooks.ws.BookParser;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import youtubevideos.ws.VideoParser;
 
 /**
  *
@@ -24,6 +25,7 @@ public class SearchCommand implements Command {
     public void execute() {
         if ("q".equals(request.getParameter("action"))) {
             request.getSession().setAttribute("items", BookParser.read(request.getParameter("q").replace(" ", "+")));
+            request.getSession().setAttribute("trailers", VideoParser.parseFeed(request.getParameter("q").replace(" ", "+")));
         } else if ("view".equals(request.getParameter("action"))) {
             List<googlebooks.ws.entities.Book> books = (List<googlebooks.ws.entities.Book>) request.getSession().getAttribute("items");
             request.getSession().setAttribute("viewItem", books.get(Integer.parseInt(request.getParameter("i"))));
