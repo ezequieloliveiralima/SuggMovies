@@ -41,6 +41,15 @@ public class BookDAO implements GenericDAO<Book>{
         Book book = em.find(Book.class, id);
         return book;
     }
+    
+    public Book readByIsbn(String isbn, long idAccount) {
+        Book b = null;
+        List<Book> books = em.createNamedQuery("Book.findByIsbn", Book.class).setParameter("isbn", isbn).getResultList();
+        for (Book book : books) {
+            if (book.getIdAccount().getIdAccount() == idAccount) b = book;
+        }
+        return b;
+    }
 
     @Override
     public List<Book> readyAll() {

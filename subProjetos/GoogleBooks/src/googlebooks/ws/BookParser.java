@@ -54,6 +54,7 @@ public class BookParser {
                 authors.forEach(author -> authorsArray.add(author.toString()));
                 String publisher = vI.getString("publisher");
                 String description = vI.getString("description");
+                String isbn = ((JsonObject) vI.getJsonArray("industryIdentifiers").get(0)).getString("identifier");
                 String thumbnail = vI.getJsonObject("imageLinks").getString("thumbnail");
                 String language = vI.getString("language");
                 String buyLink = "";
@@ -64,7 +65,7 @@ public class BookParser {
                 List<String> categoriesArray = new ArrayList<>();
                 categories.forEach(category -> categoriesArray.add(category.toString()));
                 Integer pageCount = vI.getInt("pageCount");
-                Book b = new Book(id, title, publisher, description, thumbnail, buyLink, language, authorsArray, categoriesArray, pageCount);
+                Book b = new Book(id, title, publisher, description, thumbnail, buyLink, language, authorsArray, categoriesArray, pageCount, isbn);
                 list.add(b);
             }
         }

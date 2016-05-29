@@ -6,6 +6,8 @@ package com.br.lp3.command;
 
 import com.br.lp3.exceptions.SigninEmailException;
 import com.br.lp3.exceptions.SigninPassException;
+import com.br.lp3.logger.LoggerBeanInterface;
+import com.br.lp3.logger.consumer.LoggerConsumer;
 import com.br.lp3.model.daos.AccountDAO;
 import com.br.lp3.model.daos.GenericDAO;
 import com.br.lp3.model.daos.ProfileAccountDAO;
@@ -16,6 +18,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -27,9 +38,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author 41488350
  */
 public class UserCommand implements Command {
+    @EJB
+    LoggerBeanInterface loggerBean;
 
     ProfileAccountDAO profileAccountDAO = lookupProfileAccountDAOBean();
     AccountDAO accountDAO = lookupAccountDAOBean();
+    
 
     private HttpServletRequest request;
     private HttpServletResponse response;
@@ -65,6 +79,8 @@ public class UserCommand implements Command {
     private void signin() {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
+        String log = email + " - login";
 
         Account user;
         returnPage = "index.jsp";
@@ -77,6 +93,7 @@ public class UserCommand implements Command {
                 request.getSession().setAttribute("currentProfile", profileAccountDAO.readById(user.getIdAccount()));
                 request.getSession().setAttribute("user", user);
                 returnPage = "home.jsp";
+                loggerBean.sendMessage(log);
             }
         } catch (SigninEmailException | SigninPassException ex) {
             request.getSession().setAttribute("errorMsg", ex.getMessage());
@@ -182,6 +199,13 @@ public class UserCommand implements Command {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
         }
+    }
+
+    private Message createJMSMessageForjmsLogger(Session session, Object messageData) throws JMSException {
+        // TODO create and populate message to send
+        TextMessage tm = session.createTextMessage();
+        tm.setText(messageData.toString());
+        return tm;
     }
 
 }

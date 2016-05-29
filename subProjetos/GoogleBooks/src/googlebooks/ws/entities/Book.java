@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Book implements Serializable {
     private String id;
-    private String title, publisher, description, thumbnail, buyLink, language;
+    private String title, publisher, description, thumbnail, buyLink, language, isbn;
     private List<String> authors, categories;
     private Integer pageCount;
 
@@ -32,6 +32,11 @@ public class Book implements Serializable {
         this.authors = authors;
         this.categories = categories;
         this.pageCount = pageCount;
+    }
+    
+    public Book(String id, String title, String publisher, String description, String thumbnail, String buyLink, String language, List<String> authors, List<String> categories, Integer pageCount, String isbn) {
+        this(id, title, publisher, description, thumbnail, buyLink, language, authors, categories, pageCount);
+        this.isbn = isbn;
     }
 
     public String getId() {
@@ -114,8 +119,16 @@ public class Book implements Serializable {
         this.pageCount = pageCount;
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", title=" + title + ", publisher=" + publisher + ", description=" + description + ", thumbnail=" + thumbnail + ", buyLink=" + buyLink + ", language=" + language + ", authors=" + authors + ", categories=" + categories + ", pageCount=" + pageCount + '}';
+        return "Book{" + "id=" + id + ", title=" + title + ", publisher=" + publisher + ", description=" + description + ", thumbnail=" + thumbnail + ", buyLink=" + buyLink + ", language=" + language + ", isbn=" + isbn + ", authors=" + authors + ", categories=" + categories + ", pageCount=" + pageCount + '}';
     }
 }
