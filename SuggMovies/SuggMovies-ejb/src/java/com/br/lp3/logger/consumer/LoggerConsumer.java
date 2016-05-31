@@ -28,7 +28,7 @@ public class LoggerConsumer implements MessageListener {
     public void onMessage(Message message) {
         TextMessage txtMessage = (TextMessage) message;
         try {
-            File file = new File("log.txt");
+            File file = new File("c:/temp/log.txt");
             if (!file.exists()) file.createNewFile();
             
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
