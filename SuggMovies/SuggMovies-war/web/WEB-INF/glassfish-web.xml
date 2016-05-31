@@ -9,6 +9,10 @@
     <message-destination-ref-name>jms/logger</message-destination-ref-name>
     <jndi-name>jms/logger</jndi-name>
   </message-destination-ref>
+  <message-destination-ref>
+    <message-destination-ref-name>jms/myQueue</message-destination-ref-name>
+    <jndi-name>jms/myQueue</jndi-name>
+  </message-destination-ref>
   <class-loader delegate="true"/>
   <jsp-config>
     <property name="keepgenerated" value="true">

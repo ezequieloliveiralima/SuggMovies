@@ -19,7 +19,7 @@ import javax.jms.TextMessage;
  * @author 41488350
  */
 @MessageDriven(activationConfig = {
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/logger"), // recurso
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/myQueue"), // recurso
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") // tipo
 })
 public class LoggerConsumer implements MessageListener {

@@ -15,10 +15,10 @@ import javax.jms.Queue;
 @Stateless
 public class LoggerBean implements LoggerBeanInterface {
 
-    @Resource(mappedName = "jms/logger")
+    @Resource(mappedName = "jms/myQueue")
     private Queue logger;
     @Inject
-    @JMSConnectionFactory(value = "jms/loggerFactory")
+    @JMSConnectionFactory(value = "jms/__defaultConnectionFactory")
     private JMSContext context;
 
     @Override
