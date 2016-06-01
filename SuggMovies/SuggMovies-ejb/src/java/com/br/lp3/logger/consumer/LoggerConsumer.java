@@ -28,13 +28,13 @@ public class LoggerConsumer implements MessageListener {
     public void onMessage(Message message) {
         TextMessage txtMessage = (TextMessage) message;
         try {
-            File file = new File("c:/temp/log.txt");
+            File file = new File("E://Projects//suggmovies-01-06-16//Logs//log.txt");
             if (!file.exists()) file.createNewFile();
             
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             
             String txt = new String(carregar(file));
-            txt += "\n" + format.format(new Date()) + " - " + txtMessage.getText();
+            txt += "\r\n" + format.format(new Date()) + " - " + txtMessage.getText();
             salvar(file, txt);
         } catch (IOException ex) {
             Logger.getLogger(LoggerConsumer.class.getName()).log(Level.SEVERE, null, ex);

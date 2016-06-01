@@ -27,9 +27,9 @@ public class ConnectionManager {
 
         try {
             URL url = new URL(uri);
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10", 3128));
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
-//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.16.0.10", 3128));
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection(proxy);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuilder sb = new StringBuilder();
             String line;

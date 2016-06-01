@@ -42,6 +42,16 @@ public class IndicationDAO implements GenericDAO<Indication>{
         return book;
     }
 
+    public Indication readyByISBN(String isbn)
+    {
+        Indication indication = null;
+        List<Indication> indications = em.createNamedQuery("Indication.findAll", Indication.class).getResultList();
+        for (Indication indication1 : indications) {
+            if(indication1.getIdBook().getIsbn().equals(isbn)) indication = indication1;
+        }
+        return indication;
+    }
+    
     @Override
     public List<Indication> readyAll() {
         List<Indication> indications = em.createNamedQuery("Indication.findAll", Indication.class).getResultList();

@@ -42,6 +42,16 @@ public class MovieDAO implements GenericDAO<Movie>{
         return movie;
     }
 
+    public Movie readyByName(String title)
+    {
+        Movie movie = null;
+        List<Movie> movies = em.createNamedQuery("Movie.findAll", Movie.class).getResultList();
+        for (Movie movy : movies) {
+            if(movy.getTitle().equals(title)) movie = movy;
+        }
+        return movie;
+    }
+    
     @Override
     public List<Movie> readyAll() {
         List<Movie> movies = em.createNamedQuery("Movie.findAll", Movie.class).getResultList();

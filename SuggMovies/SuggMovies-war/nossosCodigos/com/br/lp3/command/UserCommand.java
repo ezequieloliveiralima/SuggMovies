@@ -38,8 +38,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author 41488350
  */
 public class UserCommand implements Command {
-    
 
+    LoggerBeanInterface loggerBean = lookupLoggerBeanLocal();
+    
+    
     ProfileAccountDAO profileAccountDAO = lookupProfileAccountDAOBean();
     AccountDAO accountDAO = lookupAccountDAOBean();
     
@@ -92,14 +94,10 @@ public class UserCommand implements Command {
                 request.getSession().setAttribute("currentProfile", profileAccountDAO.readById(user.getIdAccount()));
                 request.getSession().setAttribute("user", user);
                 returnPage = "home.jsp";
-                sendJMSMessageToMyQueue(log);
+                loggerBean.sendMessage(log);
             }
         } catch (SigninEmailException | SigninPassException ex) {
             request.getSession().setAttribute("errorMsg", ex.getMessage());
-        } catch (JMSException ex) {
-            Logger.getLogger(UserCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(UserCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -139,6 +137,10 @@ public class UserCommand implements Command {
     }
 
     private void logout() {
+        Account user = (Account) request.getSession().getAttribute("user");
+        String email = user.getEmail();
+        String log = email + " - logout";
+        loggerBean.sendMessage(log);
         request.getSession().invalidate();
         returnPage = "index.jsp";
     }
@@ -204,43 +206,13 @@ public class UserCommand implements Command {
         }
     }
 
-    private Message createJMSMessageForjmsLogger(Session session, Object messageData) throws JMSException {
-        // TODO create and populate message to send
-        TextMessage tm = session.createTextMessage();
-        tm.setText(messageData.toString());
-        return tm;
-    }
-
-    private Message createJMSMessageForjmsMyQueue(Session session, Object messageData) throws JMSException {
-        // TODO create and populate message to send
-        TextMessage tm = session.createTextMessage();
-        tm.setText(messageData.toString());
-        return tm;
-    }
-
-    private void sendJMSMessageToMyQueue(Object messageData) throws JMSException, NamingException {
-        Context c = new InitialContext();
-        ConnectionFactory cf = (ConnectionFactory) c.lookup("java:comp/env/java:comp/DefaultJMSConnectionFactory");
-        Connection conn = null;
-        Session s = null;
+    private LoggerBeanInterface lookupLoggerBeanLocal() {
         try {
-            conn = cf.createConnection();
-            s = conn.createSession(false, s.AUTO_ACKNOWLEDGE);
-            Destination destination = (Destination) c.lookup("java:comp/env/jms/myQueue");
-            MessageProducer mp = s.createProducer(destination);
-            mp.send(createJMSMessageForjmsMyQueue(s, messageData));
-        } finally {
-            if (s != null) {
-                try {
-                    s.close();
-                } catch (JMSException e) {
-                    Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "Cannot close session", e);
-                }
-            }
-            if (conn != null) {
-                conn.close();
-            }
+            Context c = new InitialContext();
+            return (LoggerBeanInterface) c.lookup("java:global/SuggMovies/SuggMovies-ejb/LoggerBean!com.br.lp3.logger.LoggerBeanInterface");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
         }
     }
-
 }

@@ -11,6 +11,24 @@
         <local>com.br.lp3.logger.LoggerBeanInterface</local>
         <ejb-link>SuggMovies-ejb.jar#LoggerBean</ejb-link>
     </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>LoggerBean1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.br.lp3.logger.LoggerBeanInterface</local>
+        <ejb-link>SuggMovies-ejb.jar#LoggerBean</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>CommentDAO</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.br.lp3.model.daos.GenericDAO</local>
+        <ejb-link>SuggMovies-ejb.jar#CommentDAO</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>IndicationDAO</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>com.br.lp3.model.daos.GenericDAO</local>
+        <ejb-link>SuggMovies-ejb.jar#IndicationDAO</ejb-link>
+    </ejb-local-ref>
     <resource-ref>
         <res-ref-name>java:comp/DefaultJMSConnectionFactory</res-ref-name>
         <res-type>javax.jms.ConnectionFactory</res-type>

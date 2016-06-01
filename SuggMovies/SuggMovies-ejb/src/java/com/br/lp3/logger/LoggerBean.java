@@ -18,7 +18,7 @@ public class LoggerBean implements LoggerBeanInterface {
     @Resource(mappedName = "jms/myQueue")
     private Queue logger;
     @Inject
-    @JMSConnectionFactory(value = "jms/__defaultConnectionFactory")
+    @JMSConnectionFactory(value = "jms/loggerFactory")
     private JMSContext context;
 
     @Override

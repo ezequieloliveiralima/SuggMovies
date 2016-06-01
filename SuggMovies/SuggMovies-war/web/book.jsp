@@ -12,6 +12,7 @@
         <meta charset="UTF-8">
         <title>${viewItem.title}</title>
         <link href="css/book.css" rel="stylesheet" type="text/css"/>
+        <link href="css/comment.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="go-back">
@@ -35,7 +36,27 @@
             <c:forEach items="${trailers}" var="trailer">
                 <iframe width="420" height="315"
                         src="http://www.youtube.com/embed/${trailer.id.videoId}"></iframe>
-            </c:forEach>
+                </c:forEach>
         </div>
+
+        <p><b>Comentários</b></p>
+        <div class="comentario">
+            <form action="suggmovies" method="POST">
+                <input type="hidden" name="command" value="Comment">
+                <input type="hidden" name="action" value="enviar">
+                <textarea name="comment" rows="4" cols="50">
+                    Escreva seu comentário
+                </textarea>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+        <br>
+        <c:forEach items="${comentarios}" var="comentario">
+            <div>
+                <div class="comment">
+                    <c:out value="${comentario.idAccount.email}: ${comentario.comment}"/>
+                </div>
+            </div>
+        </c:forEach>
     </body>
 </html>
